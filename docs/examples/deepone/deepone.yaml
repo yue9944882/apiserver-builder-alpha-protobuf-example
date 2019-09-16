@@ -1,0 +1,7 @@
+note: DeepOne Example
+sample: |
+  apiVersion: simple.io.example/v1
+  kind: DeepOne
+  metadata:
+    name: deepone-example
+  spec:

@@ -1,0 +1,4 @@
+
+version: "1"
+domain: io.example
+repo: github.com/yue9944882/apiserver-builder-alpha-protobuf-example
