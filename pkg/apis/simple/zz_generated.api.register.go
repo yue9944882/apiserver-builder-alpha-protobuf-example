@@ -93,13 +93,12 @@ type DeepOne struct {
 }
 
 type DeepOneSpec struct {
-	FishRequired         int
+	FishRequired         int64
 	Sample               SampleElem
 	SamplePointer        *SamplePointerElem
 	SampleList           []SampleListElem
 	SamplePointerList    []*SampleListPointerElem
 	SampleMap            map[string]SampleMapElem
-	SamplePointerMap     map[string]*SampleMapPointerElem
 	SamplePrimitiveAlias SamplePrimitiveAlias
 	Const                simplecommon.CustomType
 	ConstPtr             *simplecommon.CustomType
@@ -108,7 +107,7 @@ type DeepOneSpec struct {
 }
 
 type DeepOneStatus struct {
-	ActualFish int
+	ActualFish int64
 }
 
 type SampleElem struct {
@@ -133,14 +132,6 @@ type SampleListSubElem struct {
 
 type SampleMapElem struct {
 	Sub map[string]SampleMapSubElem
-}
-
-type SampleMapPointerElem struct {
-	Sub map[string]*SampleMapPointerSubElem
-}
-
-type SampleMapPointerSubElem struct {
-	Foo string
 }
 
 type SampleMapSubElem struct {

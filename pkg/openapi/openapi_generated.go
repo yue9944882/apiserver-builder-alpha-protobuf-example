@@ -788,9 +788,9 @@ func schema_pkg_apis_simple_v1_DeepOneSpec(ref common.ReferenceCallback) common.
 				Properties: map[string]spec.Schema{
 					"fish_required": {
 						SchemaProps: spec.SchemaProps{
-							Description: "fish_required defines the number of fish required by the DeepOne.",
+							Description: "fish_required defines the number of fish required by the DeepOne. NOTE: the type has to be int64 instead of ambiguous int",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 					"sample": {
@@ -840,23 +840,11 @@ func schema_pkg_apis_simple_v1_DeepOneSpec(ref common.ReferenceCallback) common.
 							},
 						},
 					},
-					"sample_pointer_map": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/yue9944882/apiserver-builder-alpha-protobuf-example/pkg/apis/simple/v1.SampleMapPointerElem"),
-									},
-								},
-							},
-						},
-					},
 					"sample_primitive_alias": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int64",
+							Description: "NOTE: Maps using pointer as value type is not supported protobuf serialization SamplePointerMap     map[string]*SampleMapPointerElem `json:\"sample_pointer_map,omitempty\" protobuf:\"bytes,7,rep,name=sample_pointer_map\"`",
+							Type:        []string{"integer"},
+							Format:      "int64",
 						},
 					},
 					"const": {
@@ -903,7 +891,7 @@ func schema_pkg_apis_simple_v1_DeepOneSpec(ref common.ReferenceCallback) common.
 			},
 		},
 		Dependencies: []string{
-			"github.com/yue9944882/apiserver-builder-alpha-protobuf-example/pkg/apis/simple/v1.SampleElem", "github.com/yue9944882/apiserver-builder-alpha-protobuf-example/pkg/apis/simple/v1.SampleListElem", "github.com/yue9944882/apiserver-builder-alpha-protobuf-example/pkg/apis/simple/v1.SampleListPointerElem", "github.com/yue9944882/apiserver-builder-alpha-protobuf-example/pkg/apis/simple/v1.SampleMapElem", "github.com/yue9944882/apiserver-builder-alpha-protobuf-example/pkg/apis/simple/v1.SampleMapPointerElem", "github.com/yue9944882/apiserver-builder-alpha-protobuf-example/pkg/apis/simple/v1.SamplePointerElem"},
+			"github.com/yue9944882/apiserver-builder-alpha-protobuf-example/pkg/apis/simple/v1.SampleElem", "github.com/yue9944882/apiserver-builder-alpha-protobuf-example/pkg/apis/simple/v1.SampleListElem", "github.com/yue9944882/apiserver-builder-alpha-protobuf-example/pkg/apis/simple/v1.SampleListPointerElem", "github.com/yue9944882/apiserver-builder-alpha-protobuf-example/pkg/apis/simple/v1.SampleMapElem", "github.com/yue9944882/apiserver-builder-alpha-protobuf-example/pkg/apis/simple/v1.SamplePointerElem"},
 	}
 }
 
@@ -916,9 +904,9 @@ func schema_pkg_apis_simple_v1_DeepOneStatus(ref common.ReferenceCallback) commo
 				Properties: map[string]spec.Schema{
 					"actual_fish": {
 						SchemaProps: spec.SchemaProps{
-							Description: "actual_fish defines the number of fish caught by the DeepOne.",
+							Description: "actual_fish defines the number of fish caught by the DeepOne. NOTE: the type has to be int64 instead of ambiguous int",
 							Type:        []string{"integer"},
-							Format:      "int32",
+							Format:      "int64",
 						},
 					},
 				},
@@ -1066,25 +1054,8 @@ func schema_pkg_apis_simple_v1_SampleMapPointerElem(ref common.ReferenceCallback
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"sub": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/yue9944882/apiserver-builder-alpha-protobuf-example/pkg/apis/simple/v1.SampleMapPointerSubElem"),
-									},
-								},
-							},
-						},
-					},
-				},
 			},
 		},
-		Dependencies: []string{
-			"github.com/yue9944882/apiserver-builder-alpha-protobuf-example/pkg/apis/simple/v1.SampleMapPointerSubElem"},
 	}
 }
 

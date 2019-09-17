@@ -78,6 +78,6 @@ func Resource(resource string) schema.GroupResource {
 
 type DeepOneList struct {
 	metav1.TypeMeta `json:",inline"`
-	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
-	Items           []DeepOne `json:"items" protobuf:"bytes,2,rep,name=items"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []DeepOne `json:"items"`
 }
